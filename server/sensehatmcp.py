@@ -19,7 +19,7 @@ sense = SenseHat()
 
 @mcp.tool()
 async def get_temperature() -> float:
-    """Get the temperature from the Sense HAT."""
+    """Get the temperature from the Sense HAT in Celsius."""
     return sense.get_temperature()
 
 
@@ -31,7 +31,7 @@ async def get_humidity() -> float:
 
 @mcp.tool()
 async def get_pressure() -> float:
-    """Get the pressure from the Sense HAT."""
+    """Get the pressure from the Sense HAT in Millibars"""
     return sense.get_pressure()
 
 

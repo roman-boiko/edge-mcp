@@ -15,7 +15,8 @@ server = MCPServerStdio(
 
 
 ollama_model = OpenAIModel(
-    model_name="llama3.2", provider=OpenAIProvider(base_url="http://localhost:11434/v1")
+    model_name="llama3.2:1b",
+    provider=OpenAIProvider(base_url="http://localhost:11434/v1"),
 )
 
 agent = Agent(ollama_model, mcp_servers=[server])
