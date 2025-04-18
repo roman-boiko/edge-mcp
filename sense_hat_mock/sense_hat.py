@@ -36,6 +36,3 @@ class SenseHat:
 
     def show_message(self, message, text_colour=(255, 255, 255), back_colour=(0, 0, 0)):
         print(f"Mock show_message: {message}")
-
-
-# ...add more mock methods as needed for your use case...

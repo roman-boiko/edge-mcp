@@ -1,10 +1,14 @@
 from typing import Any
+import sys
+import os
 from mcp.server.fastmcp import FastMCP
 
 try:
     from sense_hat import SenseHat
 except ImportError:
-    from sense_hat_mock import SenseHat
+    # Add project root to sys.path to find sense_hat_mock
+    sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+    from sense_hat_mock.sense_hat import SenseHat
 
 # Initialize the FastMCP server
 mcp = FastMCP("sensehatmcp")
@@ -42,3 +46,8 @@ async def print_message(
         back_colour (tuple): The RGB color of the background. Default is black.
     """
     sense.show_message(message, text_colour=text_colour, back_colour=back_colour)
+
+
+if __name__ == "__main__":
+    # Run the FastMCP server
+    mcp.run(transport="stdio")
