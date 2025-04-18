@@ -8,15 +8,15 @@ class SenseHat:
 
     @property
     def temperature(self):
-        return random.uniform(15.0, 30.0)
+        return 22.5  # Always return 22.5°C
 
     @property
     def humidity(self):
-        return random.uniform(30.0, 70.0)
+        return 45.0  # Always return 45% humidity
 
     @property
     def pressure(self):
-        return random.uniform(980.0, 1050.0)
+        return 1013.25  # Always return 1013.25 hPa
 
     def get_temperature(self):
         return self.temperature
@@ -35,4 +35,4 @@ class SenseHat:
         self._led_matrix = [[(0, 0, 0) for _ in range(8)] for _ in range(8)]
 
     def show_message(self, message, text_colour=(255, 255, 255), back_colour=(0, 0, 0)):
-        print(f"Mock show_message: {message}")
+        print(f"Mock display: {message}")
