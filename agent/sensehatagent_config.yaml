@@ -1,5 +1,7 @@
 agent:
   name: "sensehatagent"
+  model: "llama3.2"
+  base_url: "http://localhost:11434/v1"
   command: "uv"
   args:
     - "--directory"

@@ -10,16 +10,17 @@ with open("agent/sensehatagent_config.yaml", "r") as f:
     sensehat_agent_config = config["agent"]
     sensehat_agent_command = sensehat_agent_config["command"]
     sensehat_agent_args = sensehat_agent_config["args"]
+    sensehat_agent_model = sensehat_agent_config["model"]
+    sensehat_agent_base_url = sensehat_agent_config["base_url"]
 
 server = MCPServerStdio(
     command=sensehat_agent_command,
     args=sensehat_agent_args,
 )
 
-
 ollama_model = OpenAIModel(
-    model_name="llama3.2",
-    provider=OpenAIProvider(base_url="http://localhost:11434/v1"),
+    model_name=sensehat_agent_model,
+    provider=OpenAIProvider(base_url=sensehat_agent_base_url),
 )
 
 agent = Agent(ollama_model, mcp_servers=[server])
