@@ -18,7 +18,7 @@ server = MCPServerStdio(
 
 
 ollama_model = OpenAIModel(
-    model_name="qwen2.5:0.5b",
+    model_name="llama3.2",
     provider=OpenAIProvider(base_url="http://localhost:11434/v1"),
 )
 
