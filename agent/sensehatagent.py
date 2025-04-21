@@ -1,21 +1,24 @@
+import asyncio
 from pydantic_ai import Agent
 from pydantic_ai.models.openai import OpenAIModel
 from pydantic_ai.providers.openai import OpenAIProvider
 from pydantic_ai.mcp import MCPServerStdio
+import yaml
+
+with open("agent/sensehatagent_config.yaml", "r") as f:
+    config = yaml.safe_load(f)
+    sensehat_agent_config = config["agent"]
+    sensehat_agent_command = sensehat_agent_config["command"]
+    sensehat_agent_args = sensehat_agent_config["args"]
 
 server = MCPServerStdio(
-    "uv",
-    args=[
-        "--directory",
-        "/Users/romanboiko/projects/edge-mcp/server",
-        "run",
-        "sensehatmcp.py",
-    ],
+    command=sensehat_agent_command,
+    args=sensehat_agent_args,
 )
 
 
 ollama_model = OpenAIModel(
-    model_name="llama3.2:1b",
+    model_name="qwen2.5:0.5b",
     provider=OpenAIProvider(base_url="http://localhost:11434/v1"),
 )
 
@@ -33,6 +36,4 @@ async def main():
 
 
 if __name__ == "__main__":
-    import asyncio
-
     asyncio.run(main())
