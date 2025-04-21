@@ -1,4 +1,3 @@
-from typing import Any
 import sys
 import os
 from mcp.server.fastmcp import FastMCP
